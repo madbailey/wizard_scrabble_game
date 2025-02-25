@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhtjoxcqkwq51"]
+
+[ext_resource type="Script" path="res://GameManager.cs" id="1_jthes"]
+[ext_resource type="PackedScene" uid="uid://cg2vjxlr507ll" path="res://Board.tscn" id="2_882px"]
+[ext_resource type="Script" path="res://TileManager.cs" id="3_kanth"]
+[ext_resource type="PackedScene" uid="uid://dyos8110fchu8" path="res://Tile.tscn" id="4_mlscu"]
+
+[node name="Main" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="." node_paths=PackedStringArray("_board", "_tileManager")]
+script = ExtResource("1_jthes")
+_board = NodePath("../Board")
+_tileManager = NodePath("../TileManager")
+
+[node name="Board" parent="." instance=ExtResource("2_882px")]
+position = Vector2(50, 50)
+
+[node name="TileManager" type="Node" parent="." node_paths=PackedStringArray("_trayNode", "_board")]
+script = ExtResource("3_kanth")
+_tileScene = ExtResource("4_mlscu")
+_trayNode = NodePath("../TrayContainer")
+_board = NodePath("../Board")
+
+[node name="TrayContainer" type="Node2D" parent="."]
+position = Vector2(150, 1050)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SubmitButton" type="Button" parent="UI"]
+offset_left = 896.0
+offset_top = 1035.0
+offset_right = 1075.0
+offset_bottom = 1097.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.14902, 0.419608, 0.270588, 1)
+theme_override_font_sizes/font_size = 24
+text = "Submit Word"
+
+[node name="ScoreLabel" type="Label" parent="UI"]
+offset_left = 863.0
+offset_top = 50.0
+offset_right = 1107.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.360784, 0.329412, 0.254902, 1)
+theme_override_font_sizes/font_size = 32
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="UI"]
+offset_left = 146.0
+offset_top = 956.0
+offset_right = 956.0
+offset_bottom = 1005.0
+theme_override_colors/font_color = Color(0.113725, 0.25098, 0.27451, 1)
+theme_override_font_sizes/font_size = 24
+text = "Place your first word through the center square"
+horizontal_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(550, 550)

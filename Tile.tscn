@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyos8110fchu8"]
+
+[ext_resource type="Script" path="res://Tile.cs" id="1_gffyd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_v0ce8"]
+
+[node name="Tile" type="Node2D" node_paths=PackedStringArray("_sprite", "_letterLabel", "_valueLabel")]
+script = ExtResource("1_gffyd")
+_sprite = NodePath("Sprite2D")
+_letterLabel = NodePath("LetterLabel")
+_valueLabel = NodePath("ValueLabel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.682353, 0.682353, 0.682353, 1)
+scale = Vector2(60, 60)
+texture = SubResource("CanvasTexture_v0ce8")
+
+[node name="LetterLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ValueLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+horizontal_alignment = 2
+vertical_alignment = 2

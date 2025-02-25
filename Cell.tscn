@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6ce30grecjai"]
+
+[ext_resource type="Script" path="res://Cell.cs" id="1_yxaai"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_p0o74"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62ptt"]
+size = Vector2(54, 63)
+
+[node name="Cell" type="Node2D" node_paths=PackedStringArray("_sprite", "_dropArea", "_bonusLabel")]
+script = ExtResource("1_yxaai")
+_sprite = NodePath("Sprite")
+_dropArea = NodePath("DropArea")
+_bonusLabel = NodePath("BonusLabel")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(26.9859, 30.7942)
+scale = Vector2(-52.9717, 62.5883)
+texture = SubResource("CanvasTexture_p0o74")
+
+[node name="DropArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropArea"]
+position = Vector2(27, 30.5)
+shape = SubResource("RectangleShape2D_62ptt")
+
+[node name="BonusLabel" type="Label" parent="."]
+offset_right = 53.0
+offset_bottom = 62.0
+horizontal_alignment = 1
+vertical_alignment = 1
